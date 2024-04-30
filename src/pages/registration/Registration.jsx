@@ -17,39 +17,64 @@ const handleSubmit= ()=>{
     }
 };
   return (
-    <div>
-    <div><img src={bgImage} alt="background" /></div>
-    <div>
-        <div>
-            <h1>Super App</h1>
+    <div className={styles.page}>
+    <div className={styles.left}>
+        <div className={styles.leftHeader}>
+            <h1 className={styles.h1}>
+                Discover new things on <br></br> SuperApp
+            </h1>
+        </div>
+        <img src={bgImage} className={styles.bgImage} alt="background" /></div>
+
+
+    <div className={styles.right}>
+        <div className={styles.rightheader}>
+            <h2>Super App</h2>
             <h2>Create your new Account</h2>
     </div>
 
-    <div><input type="text" placeholder='Name' value = {name} onChange={(e)=>{
+    <div className={styles.form}>
+    <div className='form-group'>
+    <input type="text" placeholder='Name' value = {name} onChange={(e)=>{
         setName(e.target.value)
     }} />
+    </div>
+
+<div className='form-group'>
     <input type="text" placeholder='UserName' value= {username} onChange={(e)=>{
         setUsername(e.target.value)
     }} />
+    </div>
+
+<div className='form-group'>
     <input type="email" placeholder='Email' value= {email} onChange={(e)=>{
         setEmail(e.target.value)
     }} />
+    </div>
+
+<div className='form-group'>
     <input type="tel" placeholder='Mobile' value= {mobile} onChange={(e)=>{
         setMobile(e.target.value)
     }}/>
+    
          
     </div>
 
         <div><input type="checkbox" value= {consent} onChange={(e)=>{
         setConsent(e.target.value)
-    }}/> <label htmlFor="">Share my registration data with Superapp</label></div>
+    }}/> 
+    
+    <label htmlFor="">Share my registration data with Superapp</label>
+    </div>
 
-        <div>
+      
         <button onClick={handleSubmit}>Sign Up</button>
-            <p>By clicking on Sign up. you agree to Superapp Terms and Conditions of Use</p>
+        </div>
+        <div className={styles.footer}>
+            <p>By clicking on Sign up. you agree to Superapp <span>Terms and Conditions of Use</span></p>
             <p>To learn more about how Superapp collects, uses, shares and protects your personal data please head Superapp 
             Privacy Policy</p>
-        </div>
+            </div>
     </div>
     </div>
     
