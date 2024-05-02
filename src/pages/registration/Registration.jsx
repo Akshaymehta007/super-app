@@ -7,14 +7,20 @@ const [name, setName] =useState();
 const [username, setUsername] =useState();
 const [email, setEmail] =useState();
 const [mobile, setMobile] =useState();
-const [consent, setConsent] =useState(false);
-const handleSubmit= ()=>{
-    if(!name||!email||!username||!mobile||!consent){
+const [shareData, setShareData] =useState(false);
+const handleSubmit= (e)=>{
+    e.preventDefault();
+    if(!name||!email||!username||!shareData){
         return alert('Please fill all the fields')
     }
     else {
-        console.log({name, username, email, mobile, consent});
+        const currentUser = {name, username, email, mobile}
+        localStorage.setItem(
+            "currentUser",
+            JSON.stringify({currentUser})
+        );
     }
+    console.log(JSON.parse(localStorage.getItem("currentUSer")));
 };
   return (
     <div className={styles.page}>
@@ -30,7 +36,7 @@ const handleSubmit= ()=>{
     <div className={styles.right}>
         <div className={styles.rightheader}>
             <h2>Super App</h2>
-            <h2>Create your new Account</h2>
+            <h3>Create your new Account</h3>
     </div>
 
     <div className={styles.form}>
@@ -60,8 +66,8 @@ const handleSubmit= ()=>{
          
     </div>
 
-        <div><input type="checkbox" value= {consent} onChange={(e)=>{
-        setConsent(e.target.value)
+        <div className={styles.checkbox}><input type="checkbox" value= {shareData} onChange={(e)=>{
+        setShareData(e.target.value)
     }}/> 
     
     <label htmlFor="">Share my registration data with Superapp</label>
